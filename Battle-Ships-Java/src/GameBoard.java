@@ -17,6 +17,10 @@ public class GameBoard {
 		return true;
 	}
 	
+	public int[][] getBoard() {
+		return board;
+	}
+	
 	public int xSize() {
 		return board.length;
 	}

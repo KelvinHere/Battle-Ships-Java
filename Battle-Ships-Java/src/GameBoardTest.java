@@ -42,4 +42,48 @@ public class GameBoardTest {
 		b.setCell(4, 24, 1);
 		assertEquals(1, b.getCell(4,24)); //Set to 1
 	}
+	
+	@Test
+	public void testShipIsMarkedOnBoard() {
+		GameBoard b = new GameBoard();
+		b.createBoard(5, 5);
+		// Create and place a ship of size 1
+		Ship s = new Ship();
+		s.setSize(1);
+		s.place(b);
+
+		// Check one cell on the GameBoard contains value of 1
+		int shipCellCount = 0;
+		int[][] currentBoard = b.getBoard();
+		for (int[] x : currentBoard) {
+			for (int cell : x) {
+				if (cell == 1) {
+					shipCellCount++;
+				}
+			}
+		}
+		assertEquals(1, shipCellCount);
+	}
+	
+	@Test
+	public void testBiggerShipIsMarkedOnBoard() {
+		GameBoard b = new GameBoard();
+		b.createBoard(25, 25);
+		// Create and place a ship of size 1
+		Ship s = new Ship();
+		s.setSize(6);
+		s.place(b);
+
+		// Check one cell on the GameBoard contains value of 1
+		int shipCellCount = 0;
+		int[][] currentBoard = b.getBoard();
+		for (int[] x : currentBoard) {
+			for (int cell : x) {
+				if (cell == 1) {
+					shipCellCount++;
+				}
+			}
+		}
+		assertEquals(6, shipCellCount);
+	}
 }

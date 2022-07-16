@@ -6,7 +6,16 @@ public class Ship {
 	Random r = new Random();
 	private int shipSize = 4;
 	private HashMap<Point, String> coords = new HashMap<Point, String>();
+	private String shipName;
 
+	public void setName(String n) {
+		shipName = n;
+	}
+	
+	public String getName() {
+		return shipName;
+	}
+	
 	public void setSize(int s) {
 		if (s > 0) {
 			shipSize = s;
