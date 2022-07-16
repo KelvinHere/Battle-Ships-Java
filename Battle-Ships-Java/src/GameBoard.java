@@ -1,8 +1,8 @@
 
 public class GameBoard {
-	int xSize;
-	int ySize;
-	int[][] board;
+	private int xSize;
+	private int ySize;
+	private int[][] board;
 	
 	public boolean createBoard(int x, int y) {
 		if (x < 1 || y < 1) {
