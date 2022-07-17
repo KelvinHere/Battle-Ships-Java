@@ -7,7 +7,12 @@ public class Ship {
 	private int shipSize = 4;
 	private HashMap<Point, String> coords = new HashMap<Point, String>();
 	private String shipName;
+	boolean sunk = false;
 
+	public HashMap<Point, String> getCoords() {
+		return coords;
+	}
+	
 	public void setName(String n) {
 		shipName = n;
 	}
@@ -20,6 +25,26 @@ public class Ship {
 		if (s > 0) {
 			shipSize = s;
 		}
+	}
+	
+	public String hitCheck(GameBoard board, Point shot) {
+		// Check if shot hit
+		if (coords.containsKey(shot)) {
+			board.setCell(shot.x, shot.y, 0);
+			if (coords.get(shot).equals("Hit")) {
+				return (shipName + " has already been hit here, it is now extra exploded!");
+			} else {
+				coords.replace(shot, "Hit");
+				// If all coords are hit sink the ship
+				if (!coords.containsValue("Alive")) {
+					coords.clear();
+					sunk = true;
+					return (shipName + " has been sunk!");
+				}
+				return (shipName + " has been hit!");
+			}
+		}
+		return "Miss";
 	}
 	
 	public boolean place(GameBoard board) {
