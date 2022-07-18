@@ -17,8 +17,7 @@ public class BattleShipGame {
 	
 	public void startGame() {
 		// Setup board
-		GameBoard board = new GameBoard();
-		board.createBoard(boardXSize, boardYSize);
+		GameBoard board = new GameBoard(boardXSize, boardYSize);
 		
 		// Create and place ships
 		shipList = new ArrayList<Ship>();

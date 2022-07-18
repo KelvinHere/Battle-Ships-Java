@@ -4,17 +4,24 @@ public class GameBoard {
 	private int ySize;
 	private int[][] board;
 	
-	public boolean createBoard(int x, int y) {
-		if (x < 1 || y < 1) {
-			return false;
-		}
-		
-		xSize = x;
-		ySize = y;
-		
+	public GameBoard() {
+		System.out.println("Default board of size 10x10 created");
+		xSize = 10;
+		ySize = 10;
 		board = new int[xSize][ySize];
-		//System.out.println("Board created: " + xSize + "x" + ySize);
-		return true;
+	}
+	
+	public GameBoard(int x, int y) {
+		if (x > 1 && y > 1) {
+			xSize = x;
+			ySize = y;
+			System.out.println("Game board of size " + xSize + "x" + ySize + " created");
+		} else {
+			System.out.println("Game board too small default size of 10x10 created");
+			xSize = 10;
+			ySize = 10;
+		}
+		board = new int[xSize][ySize];
 	}
 	
 	public int[][] getBoard() {

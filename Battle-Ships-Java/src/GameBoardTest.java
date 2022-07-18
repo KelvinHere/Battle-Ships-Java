@@ -5,30 +5,48 @@ import org.junit.Test;
 public class GameBoardTest {
 
 	@Test
-	public void testCreateBoard() {
+	public void testCreateBoardDefaultConstructor() {
+		// Default constructor
 		GameBoard b = new GameBoard();
-		// Valid arguments
-		assertTrue(b.createBoard(5,5));
-		// Invalid arguments
-		assertFalse(b.createBoard(0,5));
-		assertFalse(b.createBoard(5,0));
-		assertFalse(b.createBoard(-5,10));
-		assertFalse(b.createBoard(10,-5));
+		assertEquals(10, b.xSize());
+		assertEquals(10, b.ySize());
 	}
 	
 	@Test
+	public void testCreateBoardSizeConstructor() {
+		// Size constructor
+		GameBoard b = new GameBoard(5,25);
+		assertEquals(5, b.xSize());
+		assertEquals(25, b.ySize());
+	}
+	
+	@Test
+	public void testCreateBoardSizeConstructorInvalidSizeX() {
+		// Size constructor with invalid x should make a default 10x10 grid
+		GameBoard b = new GameBoard(0,25);
+		assertEquals(10, b.xSize());
+		assertEquals(10, b.ySize());
+	}
+	
+	@Test
+	public void testCreateBoardSizeConstructorInvalidSizeY() {
+		// Size constructor with invalid x should make a default 10x10 grid
+		GameBoard b = new GameBoard(10,-3);
+		assertEquals(10, b.xSize());
+		assertEquals(10, b.ySize());
+	}	
+	
+	@Test
 	public void testGameBoardSize() {
-		GameBoard b = new GameBoard();
+		GameBoard b = new GameBoard(4,10);
 		// Game board should return correct row and col length
-		b.createBoard(4, 10);
 		assertEquals(4, b.xSize());
 		assertEquals(10, b.ySize());
 	}
 	
 	@Test
 	public void testSetCellandGetCell() {
-		GameBoard b = new GameBoard();
-		b.createBoard(5, 25);
+		GameBoard b = new GameBoard(5,25);
 		//Minimum coordinates
 		assertEquals(0, b.getCell(0,0)); //Initially 0
 		b.setCell(0, 0, 1);
@@ -45,8 +63,7 @@ public class GameBoardTest {
 	
 	@Test
 	public void testShipIsMarkedOnBoard() {
-		GameBoard b = new GameBoard();
-		b.createBoard(5, 5);
+		GameBoard b = new GameBoard(5,5);
 		// Create and place a ship of size 1
 		Ship s = new Ship();
 		s.setSize(1);
@@ -67,8 +84,7 @@ public class GameBoardTest {
 	
 	@Test
 	public void testBiggerShipIsMarkedOnBoard() {
-		GameBoard b = new GameBoard();
-		b.createBoard(25, 25);
+		GameBoard b = new GameBoard(25,25);
 		// Create and place a ship of size 1
 		Ship s = new Ship();
 		s.setSize(6);
