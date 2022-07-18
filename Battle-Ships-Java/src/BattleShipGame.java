@@ -22,12 +22,10 @@ public class BattleShipGame {
 		// Create and place ships
 		shipList = new ArrayList<Ship>();
 		for (int x = 0; x <= shipAmount -1; x++) {
-			Ship ship = new Ship();
-			ship.setSize(shipSize);
+			Ship ship = new Ship(("Ship " + (x+1)), shipSize);
 			
 			if (ship.place(board) == true) {
 				shipList.add(ship);
-				ship.setName("Ship " + (x+1));
 			} else {
 				System.out.println(ship.getName() + " is unable to enter the battle");
 			}

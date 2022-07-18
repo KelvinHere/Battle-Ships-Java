@@ -65,8 +65,7 @@ public class GameBoardTest {
 	public void testShipIsMarkedOnBoard() {
 		GameBoard b = new GameBoard(5,5);
 		// Create and place a ship of size 1
-		Ship s = new Ship();
-		s.setSize(1);
+		Ship s = new Ship(1);
 		s.place(b);
 
 		// Check one cell on the GameBoard contains value of 1
@@ -86,8 +85,7 @@ public class GameBoardTest {
 	public void testBiggerShipIsMarkedOnBoard() {
 		GameBoard b = new GameBoard(25,25);
 		// Create and place a ship of size 1
-		Ship s = new Ship();
-		s.setSize(6);
+		Ship s = new Ship(6);
 		s.place(b);
 
 		// Check one cell on the GameBoard contains value of 1

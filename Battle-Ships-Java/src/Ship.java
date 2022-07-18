@@ -4,27 +4,43 @@ import java.awt.Point;
 
 public class Ship {
 	Random r = new Random();
-	private int shipSize = 4;
+	int shipSize;
 	private HashMap<Point, String> coords = new HashMap<Point, String>();
 	private String shipName;
 	boolean sunk = false;
 
+	public Ship() {
+		shipName = "A ship with no name";
+		shipSize = 4; 
+	}
+	
+	public Ship(int size) {
+		shipName = "A ship with no name";
+		if (size > 0) {
+			shipSize = size;
+		} else {
+			shipSize = 4;
+			System.out.println("Ship too small, default of " + shipSize + " used");
+		}
+	}
+	
+	public Ship(String nameMe, int size) {
+		shipName = nameMe;
+		if (size > 0) {
+			shipSize = size;
+		} else {
+			shipSize = 4;
+			System.out.println("Ship too small, default of " + shipSize + " used");
+		}
+		
+	}
+	
 	public HashMap<Point, String> getCoords() {
 		return coords;
 	}
 	
-	public void setName(String n) {
-		shipName = n;
-	}
-	
 	public String getName() {
 		return shipName;
-	}
-	
-	public void setSize(int s) {
-		if (s > 0) {
-			shipSize = s;
-		}
 	}
 	
 	public String hitCheck(GameBoard board, Point shot) {
