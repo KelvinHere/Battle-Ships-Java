@@ -48,11 +48,12 @@ public class BattleShipGame {
 				result = ship.hitCheck(board, shot);
 				if (!result.equals("Miss")) {
 					System.out.println(result);
+					if (ship.sunk == true) {
+						shipList.remove(ship);
+					}
 					break;
 				}
-				if (ship.sunk == true) {
-					shipList.remove(ship);
-				}
+				
 			}
 			
 			// If no ships were hit
